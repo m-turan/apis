@@ -1,0 +1,30 @@
+name: Ping API Every 5 Minutes
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  # Her 5 dakikada bir çalıştırır
+  workflow_dispatch:  # Manuel çalıştırma seçeneği
+
+jobs:
+  ping-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Ping API
+        run: |
+          python - <<EOF
+          import requests
+          response = requests.get("https://api-webb-46vd.onrender.com/api/admin/dashboard")
+          print("Status code:", response.status_code)
+          EOF
