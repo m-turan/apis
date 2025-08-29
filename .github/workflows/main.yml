@@ -25,6 +25,6 @@ jobs:
         run: |
           python - <<EOF
           import requests
-          response = requests.get("https://api-webb-46vd.onrender.com/api/admin/dashboard")
+          response = requests.get("https://api-gy1y.onrender.com/api/products")
           print("Status code:", response.status_code)
           EOF
